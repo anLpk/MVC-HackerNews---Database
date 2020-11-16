@@ -1,5 +1,3 @@
-require_relative '../models/post'
-
 class PostsController
   def initialize
     @view = PostsView.new
@@ -10,13 +8,11 @@ class PostsController
   ################################################################
 
   def index
-    # TODO: implement listing all posts
     posts = Post.all
     @view.display(posts)
   end
 
   def create
-    # TODO: implement creating a new post
     title = @view.title
     url = @view.url
     votes = @view.votes
@@ -26,13 +22,19 @@ class PostsController
 
   def update
     # TODO: implement updating an existing post
+    title = @view.title
+    url = @view.url
+    votes = @view.votes
+    # Update the post
+    post.title = title
+    post.url = url
+    post.votes = votes
+    # Save the post to the database
+    post.save
   end
 
   def destroy
     # TODO: implement destroying a post
-  end
-
-  def upvote
-    # TODO: implement upvoting a post
+    post.destroy
   end
 end
